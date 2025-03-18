@@ -170,6 +170,8 @@ p{
     background: var(--white);
     padding: 4rem;
     gap: 3rem;
+    box-shadow: 0 4px 8px rgba(48, 48, 48, 0.1);
+    border-radius: 10px;
 }
 .image_and_media_links{
     width: 50%;
