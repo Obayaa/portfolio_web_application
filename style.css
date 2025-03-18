@@ -1,8 +1,12 @@
 :root{
     --primary: rgb(141, 12, 158);
     --secondary: rgb(243, 243, 243);
-    --ash: rgb(247, 247, 247);
+    --ash: rgb(239, 239, 239);
+    --grey: rgb(246, 244, 244);
     --white: #fff;
+    --span-color: rgb(119, 7, 7);
+    --faded-color: rgb(121, 119, 119);
+    --hero-color: rgb(4, 32, 87);
 }
 *{
     padding: 0;
@@ -10,20 +14,40 @@
     box-sizing: border-box;
 }
 body{
-    background-color: var(--secondary);
-    display: flex;
+    background-color: var(--ash);
+    font-family: 'Poppins', sans-serif;
 }
-main{
+body::before {
+    content: "";
+    position: absolute;
+    width: 100%;
     height: 100vh;
+    background: var(--grey); 
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+.container{
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
-nav{
+nav {
+    width: 100%;
     background-color: var(--white);
+    padding: 20px 0;
+    position: fixed; 
+    top: 0;
+    left: 0;
+    z-index: 1000;
+} 
+.nav-container{
+    max-width: 1250px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1% 10%;
+
 }
 .logo_wrapper{
     display: flex;
@@ -34,30 +58,50 @@ nav{
     padding: .625rem;
     background-color: var(--primary);
     color: var(--white);
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-}
+    display: flex;
+    align-content: center;
+    justify-content: center;
+} 
 .nav_items ul{
     display: flex;
     align-items: center;
-    gap: .625rem;
+    gap: 2.5rem;
 }
 .nav_items li{
     list-style: none;
 }
 .nav_items .active{
-    padding: .625rem;
+    padding: 0.5rem 1rem;
     background-color: var(--primary);
     color: var(--white);
     border-radius: 5px;
 }
+main{
+    margin-top: 7rem;
+    max-width: 1250px;
+}
+
+
 
 /* ................... */
 .introduction_section, .about_section, .work_processes_section{
     display: flex;
     align-items: center;
-    gap: 3rem;
     margin-bottom: 5rem;
-    padding: 5% 10%;
+    padding: 2rem 0;
+
+}
+.introduction_section{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 2rem 0;
 }
 .introduction_flex{
     display: flex;
@@ -65,60 +109,146 @@ nav{
     gap: .625rem;
     flex: 1;
 }
+.hero_text{
+    font-size: 4.5rem;
+    color: var(--hero-color);
+}
+.short_note{
+    font-size: 17.5px;
+    text-align: left;
+}
+.short_note span{
+    color: var(--span-color);
+    font-weight: 700;
+}
+.say_hello_btn{
+    padding: 0.5rem 1rem;
+    background-color: var(--primary);
+    color: var(--white);
+    border-radius: 3px;
+    width: fit-content;
+    text-decoration: none;
+    margin: 0.8rem 0 2rem 0;
+}
+
 .number_desc_row{
     display: flex;
+    align-items: center;
+    justify-content: space-between;
     background-color: var(--white);
     gap: 20px;
-    padding: 20px;
-    width: fit-content;
+    padding: 20px 2rem;
+    width: 100%;
     text-align: center;
     border-radius: 3px;
 }
-.user_image_wrapper{
-    display: flex;
-    justify-content: end;
-    flex: 1;
+.col h2{
+    font-size: 1.5rem;
 }
+p{
+    color: var(--faded-color);
+}
+.user_image_wrapper{
+    flex: 1;
+    display: flex;
+    justify-content: end; 
+    align-items: center;
+    height: 100%;
+}
+.user_image_wrapper img{
+    width: 80%;
+    height: 100%;
+    max-height: 50vh; 
+    object-fit: cover; 
+    border-radius: 10px;
+}
+
 
 
 /* .......................... */
 .about_section{
-    margin: 1% 10%;
     background: var(--white);
-    padding: 2.5rem;
+    padding: 4rem;
+    gap: 3rem;
 }
-.image_and_media_links, .about_message{
-    flex: 1;
+.image_and_media_links{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
 }
 .about_image{
+    position: relative;
+    flex: 1;
     display: flex;
-    justify-content: start;
-    /* flex-direction: column; */
-    /* align-items: center; */
+    flex-direction: column;
+    justify-content: start; 
+    align-items: center;
+    height: 100%;
+}
+.about_image img{
+    width: 100%;
+    height: 100%;
+    max-height: 60vh; 
+    object-fit: cover; 
+    border-radius: 10px;
 }
 .social_media_links{
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    transform: translateX(-50%);
     display: flex;
-    /* align-items: center; */
-    justify-content: center;
-
-}
-.social_media_links ul{
-    width: fit-content;
-    background: var(--ash);
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 10px;
+    background: var(--white);
     padding: 10px;
+    box-shadow: 0 4px 8px rgba(48, 48, 48, 0.1);
 }
-.social_media_links li{
+.social_media_links .icon{
+    padding: 10px;
+    color: var(--primary);
+}
 
+.icon.active{
+    background-color: var(--primary);
+    color: var(--white);
+}
+
+.about_message{
+    display: flex;
+    flex-direction: column;
+    gap: .625rem;
+    flex: 1;
+}
+.about_message h2{
+    font-size: 2rem;
+    line-height: 40px;
+    margin-bottom: 20px;
+}
+.cv-button{
+    display: flex;
+    gap: 1.5rem;
+}
+button{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 0.5rem 1rem;
+    background-color: transparent;
+    color: var(--primary);
+    border-radius: 3px;
+    border: 1px solid var(--primary);
+}
+button span{
+    color: var(--primary);
+}
+button.active{
+    background-color: var(--primary);
+    color: var(--white);
 }
 
 
 /* .......................... */
-.work_process, .process_boxes{
+/* .work_process, .process_boxes{
     flex: 1;
 }
 .work_process{
@@ -136,10 +266,9 @@ nav{
     flex-wrap: wrap;
     justify-content: end;
     gap: .625rem;
-    /* width: fit-content; */
 }
 .process_boxes .box{
     padding: 1rem;
     width: calc(50% - 20px);
     background-color: var(--white);
-}
+} */
